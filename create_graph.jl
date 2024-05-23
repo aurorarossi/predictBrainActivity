@@ -28,7 +28,7 @@ function threshold(x,t)
 end
     
             
-#matrix = threshold.(matrix, 1)
+matrix = threshold.(matrix, 1)
 
 npzwrite("graph.npy", matrix)
 
