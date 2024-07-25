@@ -27,7 +27,7 @@ threshold(x, t) = (x >= t) ? 1 : 0
 atlas = npzread("data/atlas.npy")
 
 matrix = create_graph_near_regions(atlas)       
-matrix = threshold.(matrix, 1)
+#matrix = threshold.(matrix, 1)
 
 npzwrite("data/graph.npy", matrix)
 

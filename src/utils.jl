@@ -20,8 +20,8 @@ function load_graph(filename)
     return g
 end   
 
-function plot_predicted_data(graph, features, targets, sensor)
-    p = plot(xlabel="Time step", ylabel="Brain activity (BOLD)", title="Sensor $(sensor)")
+function plot_predicted_data(graph, features, targets, sensor, subject)
+    p = plot(xlabel="Time step", ylabel="Normalized brain activity (BOLD)", title="Sensor $(sensor) of subject $(subject)")
     prediction = []
     grand_truth = []
     for i in 1:3:length(features)
@@ -30,7 +30,7 @@ function plot_predicted_data(graph, features, targets, sensor)
     end
     prediction = reduce(vcat, prediction)
     grand_truth = reduce(vcat, grand_truth)
-    plot!(p, collect(1:length(features)), grand_truth, color=:blue, label="Ground Truth", xticks=([i for i in 0:50:250], ["$(i)" for i in 0:4:24]), lw=2)
+    plot!(p, collect(1:length(features)), grand_truth, color=:blue, label="Ground Truth", lw=2)
     plot!(p, collect(1:length(features)), prediction, color=:red, label="Prediction", lw=2)
     return p
 end
